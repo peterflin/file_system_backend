@@ -37,7 +37,6 @@
 ## 安裝與配置 (Installation and Configuration)
 1. 下載程式碼：
 ```bash
-Copy code
 git clone https://github.com/peterflin/file_system.git
 ```
 2. 配置環境：
