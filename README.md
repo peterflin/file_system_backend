@@ -26,14 +26,6 @@
 - **PUT /files/{id}**：更新檔案資訊。
 - **DELETE /files/{id}**：刪除檔案。
 
-更多 API 資訊，請參閱 API 文件。## API 端點
-
-- **GET /files**：取得檔案列表。
-- **POST /files**：上傳新檔案。
-- **GET /files/{id}**：取得特定檔案的詳細資訊。
-- **PUT /files/{id}**：更新檔案資訊。
-- **DELETE /files/{id}**：刪除檔案。
-
 更多 API 資訊，請參閱 API 文件。
 
 ## 技術細節
