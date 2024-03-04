@@ -10,7 +10,7 @@ from models.user_model import UserModel
 user_router = APIRouter()
 
 
-@user_router.post("/api/token", tags=["User"])
+@user_router.post("/user/token", tags=["User"])
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Token:
@@ -24,8 +24,7 @@ async def login_for_access_token(
     return token
 
 
-@user_router.post("/api/register", tags=["User"])
+@user_router.post("/user/register", tags=["User"])
 async def register_user(user: User):
     print(user)
     return UserModel().register(user.username, user.password)
-

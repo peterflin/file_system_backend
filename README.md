@@ -14,19 +14,57 @@
 3. **設定群組權限**：針對每個群組設定統一的權限。
 4. **存取檔案**：使用者通過 API 存取檔案時，系統會根據其所屬的群組和個人權限進行授權。
 
-## 系統需求 (System Requirements)
-- 支援 Web 瀏覽器的裝置
-- 連接至互聯網
-
 ## API 端點
 
-- **GET /files**：取得檔案列表。
-- **POST /files**：上傳新檔案。
-- **GET /files/{id}**：取得特定檔案的詳細資訊。
-- **PUT /files/{id}**：更新檔案資訊。
-- **DELETE /files/{id}**：刪除檔案。
+- **User**
+    - /user/token : 取得JWT
+    - /user/register : 註冊使用者
+    - */user/list_project : 使用者擁有的專案*
+
+- **Project**
+    - */project/create_project : 新建專案*
+    - */project/rename_project : 重新命名專案*
+    - */project/delete_project : 刪除專案*
+
+- **Service**
+    - **POST /service/list_dir**：取得目錄列表
 
 更多 API 資訊，請參閱 API 文件。
+
+> 部分功能開發中...
+
+## Database
+PostgreSQL
+
+### Table Schema
+path
+|Column|Type|
+|------|----|
+|path_id|integer|
+|path_name|varchar|
+|path_type|integer|
+
+privilege
+|Column|Type|
+|------|----|
+|parent_id|integer|
+|child_id|integer|
+|user_id|integer|
+|privilege|integer|
+
+project
+|Column|Type|
+|------|----|
+|project_id|integer|
+|user_id|integer|
+|privilege|integer|
+
+users
+|Column|Type|
+|------|----|
+|username|varchar(20)|
+|user_id|integer|
+|password|varchar|
 
 ## 技術細節
 
@@ -39,15 +77,7 @@
 ```bash
 git clone https://github.com/peterflin/file_system.git
 ```
-2. 配置環境：
-- 請參考安裝文件進行系統部署和配置。
-
-## 常見問題 (FAQs)
-### 1. 如何新增使用者？  
-請在系統管理介面中，找到使用者管理功能，點擊新增使用者並填寫相關資訊。
-
-### 2. 如何設定群組權限？  
-在系統管理介面中，找到群組管理功能，選擇目標群組並設定相應的權限。
-
-### 3. 如何上傳多個檔案？
-系統支援批量上傳，您可以選擇多個檔案進行上傳。
+2. Run on Docker：
+```
+docker run -p 8081:8000 --name file_system peterflin/file_system:1.0.0
+```
