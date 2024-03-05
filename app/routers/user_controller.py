@@ -26,5 +26,4 @@ async def login_for_access_token(
 
 @user_router.post("/user/register", tags=["User"])
 async def register_user(user: User):
-    print(user)
     return UserModel().register(user.username, user.password)
