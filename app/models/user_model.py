@@ -8,7 +8,7 @@ from models.orm_model import User
 
 class UserModel:
     def __init__(self):
-        self.session = get_session("user")
+        self.session = get_session("service")
         # self.username = username
         # self.password = password
         # self.privileges = privileges
@@ -23,9 +23,9 @@ class UserModel:
             data={"sub": username}, expires_delta=access_token_expires
         )
         return Token(access_token=access_token, token_type="bearer")
-    
-    def register(self, username, password, privilege=1):
-        user = User(username=username, password=get_password_hash(password), privilege=privilege)
+
+    def register(self, username, password):
+        user = User(username=username, password=get_password_hash(password))
         self.session.add(user)
         self.session.commit()
         return user

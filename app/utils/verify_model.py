@@ -14,7 +14,11 @@ class TokenData(BaseModel):
 class User(BaseModel):
     username: str
     password: str
-    privilege: Union[int, None] = None
+
+
+class DirectoryInput(BaseModel):
+    path: str
+    object_id: int
 
 
 class File(BaseModel):
